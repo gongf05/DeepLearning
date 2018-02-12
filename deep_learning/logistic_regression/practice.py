@@ -499,7 +499,7 @@ print("softmax(x) = " + str(softmax(x)))
 # 
 # In deep learning, you deal with very large datasets. Hence, a non-computationally-optimal function can become a huge bottleneck in your algorithm and can result in a model that takes ages to run. To make sure that your code is  computationally efficient, you will use vectorization. For example, try to tell the difference between the following implementations of the dot/outer/elementwise product.
 
-# In[ ]:
+# In[28]:
 
 import time
 
@@ -542,7 +542,7 @@ toc = time.process_time()
 print ("gdot = " + str(gdot) + "\n ----- Computation time = " + str(1000*(toc - tic)) + "ms")
 
 
-# In[ ]:
+# In[29]:
 
 x1 = [9, 2, 5, 0, 0, 7, 5, 0, 0, 0, 9, 2, 5, 0, 0]
 x2 = [9, 2, 2, 9, 0, 9, 2, 5, 0, 0, 9, 2, 5, 0, 0]
@@ -585,7 +585,7 @@ print ("gdot = " + str(dot) + "\n ----- Computation time = " + str(1000*(toc - t
 # - L1 loss is defined as:
 # $$\begin{align*} & L_1(\hat{y}, y) = \sum_{i=0}^m|y^{(i)} - \hat{y}^{(i)}| \end{align*}\tag{6}$$
 
-# In[ ]:
+# In[32]:
 
 # GRADED FUNCTION: L1
 
@@ -600,13 +600,13 @@ def L1(yhat, y):
     """
     
     ### START CODE HERE ### (≈ 1 line of code)
-    loss = None
+    loss = np.abs(yhat - y).sum()
     ### END CODE HERE ###
     
     return loss
 
 
-# In[ ]:
+# In[33]:
 
 yhat = np.array([.9, 0.2, 0.1, .4, .9])
 y = np.array([1, 0, 0, 1, 1])
@@ -628,7 +628,7 @@ print("L1 = " + str(L1(yhat,y)))
 # 
 # - L2 loss is defined as $$\begin{align*} & L_2(\hat{y},y) = \sum_{i=0}^m(y^{(i)} - \hat{y}^{(i)})^2 \end{align*}\tag{7}$$
 
-# In[ ]:
+# In[37]:
 
 # GRADED FUNCTION: L2
 
@@ -643,13 +643,13 @@ def L2(yhat, y):
     """
     
     ### START CODE HERE ### (≈ 1 line of code)
-    loss = None
+    loss = (np.abs(yhat - y)* np.abs(yhat - y)).sum()
     ### END CODE HERE ###
     
     return loss
 
 
-# In[ ]:
+# In[38]:
 
 yhat = np.array([.9, 0.2, 0.1, .4, .9])
 y = np.array([1, 0, 0, 1, 1])
